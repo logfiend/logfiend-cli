@@ -1,0 +1,7 @@
+provider:
+  type: elasticsearch
+  endpoint: "https://localhost:9200"
+  auth:
+    type: basic
+    username: "${ELASTIC_USERNAME}"
+    password: "${ELASTIC_PASSWORD}" 

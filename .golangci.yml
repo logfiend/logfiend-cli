@@ -1,0 +1,23 @@
+run:
+  timeout: 5m
+  tests: true
+  skip-dirs:
+    - build
+linters:
+  enable:
+    - govet
+    - staticcheck
+    - gosimple
+    - ineffassign
+    - misspell
+    - errcheck
+    - gocritic
+    - gofmt
+    - goimports
+    - revive
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+service:
+  golangci-lint-version: 1.57.2 

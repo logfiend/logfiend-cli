@@ -1,0 +1,33 @@
+You are an AI assistant working on the LogFiend CLI (Go 1.21).
+
+Goals:
+- Maintain security posture (no secrets, safe paths, HTTPS default)
+- Preserve CLI behavior and flags
+- Keep providers vendor-agnostic behind `types.Provider`
+- Ensure tests and lint pass (see `.golangci.yml`)
+
+Coding Standards:
+- Descriptive names, early returns, minimal nesting
+- No logging of secrets
+- Unit-test new logic; avoid flaky/network tests
+- Keep functions small; split when >50 lines or mixed concerns
+
+When Editing:
+- Prefer targeted edits; do not reformat unrelated code
+- Update docs if public behavior changes
+- If adding a provider, register it in `internal/providers/providers.go`
+
+Commands:
+- Build: `make build`
+- Test: `make test`
+- Lint: `golangci-lint run`
+
+Files of Interest:
+- `main.go` — CLI entry
+- `internal/config` — config load/validate/sanitize
+- `internal/types` — core interfaces and types
+- `internal/providers` — registry and implementations
+
+Danger Zones:
+- Do not relax path sanitization or TLS requirements without discussion
+- Do not change default output schema without a migration note 

@@ -1,0 +1,86 @@
+# examples/elasticsearch.yml
+# SECURITY: Set environment variables before running:
+# export ELASTIC_USERNAME="elastic"
+# export ELASTIC_PASSWORD="your-password"
+provider:
+  type: "elasticsearch"
+  endpoint: "https://localhost:9200"
+  auth:
+    type: "basic"
+    username: "${ELASTIC_USERNAME}"
+    password: "${ELASTIC_PASSWORD}"
+  tls:
+    enabled: true
+    insecure_skip_verify: true
+
+---
+
+# examples/splunk.yml
+# SECURITY: Set environment variables before running:
+# export SPLUNK_USERNAME="admin"
+# export SPLUNK_PASSWORD="your-password"
+provider:
+  type: "splunk"
+  endpoint: "https://localhost:8089"
+  auth:
+    type: "basic"
+    username: "${SPLUNK_USERNAME}"
+    password: "${SPLUNK_PASSWORD}"
+  tls:
+    enabled: true
+    insecure_skip_verify: true
+
+---
+
+# examples/azure-sentinel.yml
+# SECURITY: Set environment variable before running:
+# export AZURE_TOKEN="your-azure-access-token"
+provider:
+  type: "azure-sentinel"
+  endpoint: "https://management.azure.com/subscriptions/your-subscription-id/resourceGroups/your-rg/providers/Microsoft.OperationalInsights/workspaces/your-workspace"
+  auth:
+    type: "bearer"
+    token: "${AZURE_TOKEN}"
+
+---
+
+# examples/qradar.yml
+# SECURITY: Set environment variable before running:
+# export QRADAR_API_KEY="your-qradar-api-key"
+provider:
+  type: "qradar"
+  endpoint: "https://your-qradar-instance.com"
+  auth:
+    type: "api_key"
+    api_key: "${QRADAR_API_KEY}"
+  tls:
+    enabled: true
+    insecure_skip_verify: false
+
+---
+
+# examples/elasticsearch-cloud.yml
+# SECURITY: Set environment variables before running:
+# export ELASTIC_CLOUD_USERNAME="elastic"
+# export ELASTIC_CLOUD_PASSWORD="your-cloud-password"
+provider:
+  type: "elasticsearch"
+  endpoint: "https://your-deployment.es.region.cloud.es.io:9243"
+  auth:
+    type: "basic"
+    username: "${ELASTIC_CLOUD_USERNAME}"
+    password: "${ELASTIC_CLOUD_PASSWORD}"
+  tls:
+    enabled: true
+
+---
+
+# examples/splunk-cloud.yml
+# SECURITY: Set environment variable before running:
+# export SPLUNK_CLOUD_TOKEN="your-splunk-token"
+provider:
+  type: "splunk"
+  endpoint: "https://your-instance.splunkcloud.com:8089"
+  auth:
+    type: "bearer"
+    token: "${SPLUNK_CLOUD_TOKEN}"

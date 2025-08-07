@@ -1,0 +1,51 @@
+# LogFiend Configuration File
+# Vendor-agnostic SIEM data source inventory tool
+
+# SECURITY: Never include credentials directly in config files
+# Always use environment variables for sensitive information
+
+provider:
+  # Provider type: elasticsearch, splunk, azure-sentinel, qradar
+  type: "elasticsearch"
+  
+  # SIEM endpoint URL (HTTPS required for remote endpoints)
+  endpoint: "https://my-elasticsearch-project-bf4293.es.us-east-1.aws.elastic.cloud:443"
+  
+  # Connection timeout (optional, default: 30s)
+  timeout: "30s"
+  
+  # Number of retries for failed requests (optional, default: 3)
+  retries: 3
+  
+  # Authentication configuration (ALWAYS use environment variables)
+  auth:
+    type: "api_key"  # basic, bearer, api_key
+    # username: "${ELASTIC_USERNAME}"  # Read from environment variable
+    # password: "${ELASTIC_PASSWORD}"  # Read from environment variable
+    # token: "${BEARER_TOKEN}"       # for bearer auth
+    api_key: "OTg3ZmdaZ0JVYnlQb0hIeVFxQU06bS05SFRZeV9uMzVqX0pTUkZzWGdUQQ=="          # for api_key auth
+  
+  # TLS configuration (optional)
+  tls:
+    enabled: true
+    insecure_skip_verify: true  # Only for development/testing
+    # cert_file: "client.crt"         # Relative paths only
+    # key_file: "client.key"          # Relative paths only
+    # ca_file: "ca.crt"               # Relative paths only
+  
+  # Provider-specific options (optional)
+  options:
+    # kibana_index: ".kibana"         # for Elasticsearch
+    # app_context: "search"           # for Splunk
+    # api_version: "2022-10-01"       # for Azure Sentinel
+
+# Output configuration (optional)
+output:
+  format: "json"      # json, yaml, csv
+  pretty: true        # pretty print JSON
+  timestamp: false    # include timestamp in filename
+
+# Logging configuration (optional)
+logging:
+  level: "info"       # debug, info, warn, error
+  format: "text"      # text, json
